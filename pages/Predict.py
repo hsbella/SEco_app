@@ -20,7 +20,7 @@ genre = st.selectbox(
 )
 
 audience = st.slider(
-    "관람인원", 1000, 90000, 20000, step=500
+    "관람인원", 100, 100000, 100, step=100
 )
 
 month = st.selectbox("월", list(range(1, 13)))
@@ -45,3 +45,4 @@ if st.button("예측하기"):
     st.subheader("📌 예측 결과")
     st.write(f"**AV-HSI 예측치:** {pred:.2f}")
     st.write(f"**위험 등급:** {label}")
+
