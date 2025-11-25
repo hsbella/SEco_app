@@ -30,17 +30,19 @@ genre = st.selectbox("장르", genre_list)
 audience = st.slider("관람인원", 100, 100000, 100, step=100)
 month = st.selectbox("월", list(range(1,13)))
 
-# 예측
-if st.button("예측하기"):
-    
-    new_data = pd.DataFrame([{
-        '공연장': hall,
-        '장르': genre,
-        '관람인원': audience,
-        'MONTH': month
-    }])
 
+# 예측 버튼
+if st.button("예측하기"):
+
+    # 컬럼 순서를 학습 순서와 정확히 맞춤
+    new_data = pd.DataFrame(
+        [[hall, genre, audience, month]],
+        columns=['공연장', '장르', '관람인원', 'MONTH']
+    )
+
+    # 예측
     pred = model.predict(new_data)[0]
+    
 
     # 위험 등급
     if pred >= 81: label = "🚨 5단계 (위험)"
@@ -52,3 +54,4 @@ if st.button("예측하기"):
     st.subheader("📌 예측 결과")
     st.write(f"**AV-HSI 예측치:** {pred:.2f}")
     st.write(f"**위험 등급:** {label}")
+
