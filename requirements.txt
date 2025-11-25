@@ -1,9 +1,6 @@
-streamlit
-pandas
-numpy
-scikit-learn
-xgboost
-plotly
-openpyxl
 scikit-learn==1.2.2
 xgboost==1.7.6
+pandas==2.2.2
+numpy
+streamlit
+openpyxl
